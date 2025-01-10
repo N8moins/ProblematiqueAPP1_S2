@@ -20,11 +20,41 @@ Canevas::~Canevas()
 
 bool Canevas::ajouterCouche()
 {
-   return true;
+   try
+   {
+      Couche *tmp = new Couche();
+
+      bool isActive = true;
+
+      for (Couche c : this->couches)
+      {
+         if (c.getEtat() == Couche::Etat::actif)
+            isActive = false;
+      }
+
+      if (isActive)
+         tmp->changerEtat(Couche::Etat::actif);
+
+      couches->ajouter(tmp);
+
+      return true;
+   }
+   catch (const std::exception &e)
+   {
+      return false;
+   }
 }
 
 bool Canevas::retirerCouche(int index)
 {
+   if (index < 0 || index >= couches->getTaille())
+      return false;
+   
+   Couche* c = couches[index];
+
+   c->reinitialiser();
+   delete c;
+
    return true;
 }
 

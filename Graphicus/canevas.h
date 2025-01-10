@@ -2,7 +2,7 @@
  * Fichier: canevas.h
  * Auteurs: C.-A. Brunet
  * Date: 13 juin 2024 (creation)
- * Modifie par : ...
+ * Modifie par : Nathan Lessard et Gabriel Bruneau
  * Date : ...
  * Description: Declaration de la classe Canevas. La classe Canevas gere un
  *    vecteur de pointeur de couches en accord avec les specifications de Graphicus.
@@ -13,7 +13,8 @@
 #define CANEVAS_H
 
 #include <iostream>
-#include "forme.h"
+#include <vector>
+#include "Formes/forme.h"
 #include "couche.h"
 
 using namespace std;
@@ -41,7 +42,7 @@ public:
    void afficher(ostream &s);
 
 private:
-   // A completer (vecteur...)
+    vector<Couche*> couches;
 };
 
 #endif

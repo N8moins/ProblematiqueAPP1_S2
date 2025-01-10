@@ -13,7 +13,7 @@
 #ifndef COUCHE_H
 #define COUCHE_H
 
-#include "forme.h"
+#include "Formes/forme.h"
 #include "coordonnee.h"
 
 const int MAX_FORMES = 5;
@@ -22,23 +22,31 @@ const int MAX_FORMES = 5;
 
 class Couche
 {
+    enum Etat
+    {
+        Initialise,
+        desactive,
+        actif
+    };
 
   Coordonnee ancrage;
+  Etat etat;
 
 public:
   Couche();
   ~Couche();
   bool ajouterForme(Forme *forme);
-  Forme* supprimerForme(int index);
-  Forme*  getForme(int index);
+  Forme *supprimerForme(int index);
+  Forme *getForme(int index);
   float aireTotale();
-  void translater(int deltaX, int deltaY);
-  void setAncrage(Coordonnee c);
-  Coordonnee getAncrage();
+  bool translater(int deltaX, int deltaY);
+  bool reinitialiser();
+  bool changerEtat(Etat etat);
+  void afficherCouche();
+  Etat getEtat();
 
 private:
   Forme *formes[MAX_FORMES];
 };
 
 #endif
-

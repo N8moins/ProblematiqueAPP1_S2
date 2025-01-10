@@ -26,6 +26,9 @@ Couche::~Couche()
 
 bool Couche::ajouterForme(Forme *forme)
 {
+    if (etat != Couche::Etat::actif)
+        return false;
+
     for (int i = 0; i < MAX_FORMES; i++)
         if (formes[i] == nullptr)
         {
@@ -35,11 +38,19 @@ bool Couche::ajouterForme(Forme *forme)
     return false;
 }
 
+Couche::Etat Couche::getEtat()
+{
+    return etat;
+}
+
 Forme *Couche::supprimerForme(int index)
 {
-    if (index > MAX_FORMES - 1 || index > 0)
-        if (formes[index] == nullptr)
-            return nullptr;
+    if (index >= MAX_FORMES || index < 0)
+        return nullptr;
+    if (formes[index] == nullptr)
+        return nullptr;
+    if (etat != Couche::Etat::actif)
+        return nullptr;
 
     Forme *pForme = (formes[index]);
 
@@ -48,16 +59,19 @@ Forme *Couche::supprimerForme(int index)
     {
         formes[index + i] = formes[index + i + 1];
     }
-    formes[MAX_FORMES] = nullptr;
+    formes[MAX_FORMES - 1] = nullptr;
 
     return pForme;
 }
 
 Forme *Couche::getForme(int index)
 {
-    if (index > MAX_FORMES - 1 || index > 0)
-        if (formes[index] == nullptr)
-            return nullptr;
+    if (index >= MAX_FORMES || index < 0)
+        return nullptr;
+
+    if (formes[index] == nullptr)
+        return nullptr;
+
     return formes[index];
 }
 
@@ -71,4 +85,61 @@ float Couche::aireTotale()
     }
 
     return total;
+}
+
+bool Couche::translater(int deltaX, int deltaY)
+{
+    try
+    {
+        ancrage.x += deltaX;
+        ancrage.y += deltaY;
+
+        return true;
+    }
+    catch (const std::exception &e)
+    {
+        return false;
+    }
+}
+
+bool Couche::reinitialiser()
+{
+    if (etat == Couche::Etat::Initialise)
+        return false;
+
+    etat = Couche::Etat::Initialise;
+
+    for (int i = 0; i < MAX_FORMES; i++)
+        delete formes[i];
+
+    return true;
+}
+
+bool Couche::changerEtat(Etat etat)
+{
+    if (etat == this->etat)
+        return false;
+
+    this->etat = etat;
+    return true;
+}
+
+void Couche::afficherCouche()
+{
+    cout << "État: " << ((etat == Couche::Etat::Initialise) ? "initialisée" : (etat == Couche::Etat::actif) ? "active"
+                                                                                                            : "inactive")
+         << endl;
+    if (formes[0] == nullptr)
+    {
+        cout << "Couche: vide" << endl;
+    }
+    else
+    {
+        int i = 0;
+        while (i < MAX_FORMES || formes[i] != nullptr)
+        {
+            formes[i]->afficher(cout);
+            i++;
+        }
+    }
 }

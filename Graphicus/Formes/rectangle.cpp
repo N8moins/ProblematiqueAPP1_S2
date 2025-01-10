@@ -1,25 +1,29 @@
 /***
  * Fichier: rectangle.cpp
- * Auteurs: Nathan Lessard
+ * Auteurs: Nathan Lessard et Gabriel Bruneau
  * Date: 09 janvier 2024
  * Description: Implementation des methodes de la classe Rectangle.
  */
 
 #include "rectangle.h"
 
-Rectangle::Rectangle(int x, int y, int largeur, int hauteur) : Forme(x, y), largeur(largeur), hauteur(hauteur)
+Rectangle::Rectangle(int x, int y, int l, int h) : Forme(x, y)
 {
     ancrage.x = x;
     ancrage.y = y;
-    this.largeur = largeur;
-    this.hauteur = hauteur;
+    largeur = largeur;
+    hauteur = hauteur;
 }
 
 Rectangle::~Rectangle()
 {
 }
 
-Rectangle::aire() => largeur * hauteur;
-
-Rectangle::afficher(ostream &s) 
-    => s << "Rectangle: ancrage=(" << ancrage.x << "," << ancrage.y << "), largeur=" << largeur << ", hauteur=" << hauteur;
+double Rectangle::aire() {
+    largeur * hauteur;
+}
+void Rectangle::afficher(ostream &s)
+{
+    s << "Rectangle (x=" << ancrage.x << ", y=" << ancrage.y <<
+    ", l=" << largeur << ", h=" << hauteur << ", aire=" << aire() << ")" << endl;
+}

@@ -2,9 +2,9 @@
 
 Carre::Carre(int x, int y, int cote)
 {
-    ancrage.x = x;
-    ancrage.y = y;
-    this.cote = cote;
+    this->ancrage.x = x;
+    this->ancrage.y = y;
+    this->cote = cote;
 }
 
 Carre::~Carre()
@@ -14,4 +14,9 @@ Carre::~Carre()
 double Carre::aire()
 {
     return cote * cote;
+}
+
+void Carre::afficher(std::ostream &s) {
+    s << "Carre (x=" << ancrage.x << ", y=" << ancrage.y <<
+            ", c=" << cote << ", aire=" << aire() << ")" << endl;
 }

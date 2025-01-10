@@ -11,7 +11,7 @@
 #define FORME_H
 
 #include <iostream>
-#include "coordonnee.h"
+#include "../coordonnee.h"
 
 using namespace std;
 
