@@ -22,6 +22,15 @@ canevas.o: canevas.cpp canevas.h couche.h forme.h
 couche.o: couche.cpp couche.h forme.h
 	g++ -c couche.cpp
 
+carre.o: carre.cpp carre.h rectangle.h forme.h
+	g++ -c carre.cpp
+
+rectangle.o: rectangle.cpp rectangle.h forme.h
+	g++ -c rectangle.cpp
+
+cercle.o: cercle.cpp cercle.h forme.h
+	g++ -c cercle.cpp
+
 forme.o: forme.cpp forme.h
 	g++ -c forme.cpp
 
