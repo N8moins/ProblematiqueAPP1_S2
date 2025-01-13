@@ -46,6 +46,7 @@ private:
   Forme *formes[MAX_FORMES];
     Coordonnee ancrage;
     Etat etat;
+    int count;
 };
 
 #endif

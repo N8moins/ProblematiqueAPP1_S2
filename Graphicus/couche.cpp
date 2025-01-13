@@ -33,6 +33,7 @@ bool Couche::ajouterForme(Forme *forme)
         if (formes[i] == nullptr)
         {
             formes[i] = forme;
+            count++;
             return true;
         }
     return false;
@@ -60,6 +61,7 @@ Forme *Couche::supprimerForme(int index)
         formes[index + i] = formes[index + i + 1];
     }
     formes[MAX_FORMES - 1] = nullptr;
+    count--;
 
     return pForme;
 }
@@ -79,7 +81,7 @@ double Couche::aireTotale()
 {
     float total = 0;
 
-    for (int i = 0; i < MAX_FORMES; i++)
+    for (int i = 0; i < count; i++)
     {
         total += formes[i]->aire();
     }
@@ -109,7 +111,7 @@ bool Couche::reinitialiser()
 
     etat = Couche::Etat::Initialise;
 
-    for (int i = 0; i < MAX_FORMES; i++)
+    for (int i = 0; i < count; i++)
         delete formes[i];
 
     return true;
@@ -136,7 +138,7 @@ void Couche::afficherCouche(ostream &s)
     else
     {
         int i = 0;
-        while (i < MAX_FORMES || formes[i] != nullptr)
+        while (i < count)
         {
             formes[i]->afficher(s);
             i++;

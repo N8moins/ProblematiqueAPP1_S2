@@ -20,7 +20,7 @@ public:
     bool IsEmpty();
 
 private:
-    int m_initialSize = 1;
+    int m_initialSize = 2;
     int m_currentSize = m_initialSize;
     int m_count = 0;
     T** m_array;

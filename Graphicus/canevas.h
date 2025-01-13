@@ -42,7 +42,7 @@ public:
    void afficher(ostream &s);
 
 private:
-    Vector<Couche>* couches = new Vector<Couche>;
+    Vector<Couche>* couches = new Vector<Couche>();
     Couche* active;
 };
 
