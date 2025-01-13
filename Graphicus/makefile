@@ -7,8 +7,8 @@
 #	la distribution de Graphicus.
 #
 
-graphicus-02: graphicus-02.o tests.o canevas.o couche.o forme.o rectangle.o carre.o cercle.o forme.o
-	g++ -o graphicus-02 graphicus-02.o tests.o canevas.o couche.o forme.o rectangle.o carre.o cercle.o forme.o
+graphicus-02: graphicus-02.o tests.o canevas.o couche.o forme.o rectangle.o carre.o cercle.o
+	g++ -o graphicus-02 graphicus-02.o tests.o canevas.o couche.o forme.o rectangle.o carre.o cercle.o
 
 graphicus-02.o: graphicus-02.cpp canevas.h couche.h Formes/forme.h
 	g++ -c graphicus-02.cpp
@@ -16,23 +16,23 @@ graphicus-02.o: graphicus-02.cpp canevas.h couche.h Formes/forme.h
 tests.o: tests.cpp tests.h canevas.h couche.h Formes/forme.h
 	g++ -c tests.cpp
 
-canevas.o: ./VectorLib/vector.h canevas.cpp canevas.h couche.h Formes/forme.h
+canevas.o: ./VectorLib/Vector.h canevas.cpp canevas.h couche.h Formes/forme.h
 	g++ -c canevas.cpp
 
 couche.o: couche.cpp couche.h Formes/forme.h
 	g++ -c couche.cpp
 
-carre.o: Formes/carre.cpp Formes/carre.h Formes/rectangle.h Formes/forme.h
-	g++ -c Formes/carre.cpp
-
-rectangle.o: Formes/rectangle.cpp Formes/rectangle.h Formes/forme.h
-	g++ -c Formes/rectangle.cpp
-
-cercle.o: Formes/cercle.cpp Formes/cercle.h Formes/forme.h
-	g++ -c Formes/cercle.cpp
-
 forme.o: Formes/forme.cpp Formes/forme.h
 	g++ -c Formes/forme.cpp
+
+rectangle.o: Formes/rectangle.cpp Formes/rectangle.h forme.o
+	g++ -c Formes/rectangle.cpp
+
+carre.o: Formes/carre.cpp Formes/carre.h Formes/rectangle.h forme.o
+	g++ -c Formes/carre.cpp
+
+cercle.o: Formes/cercle.cpp Formes/cercle.h forme.o
+	g++ -c Formes/cercle.cpp
 
 
 

@@ -10,6 +10,9 @@
 ********/
 
 #include "tests.h"
+#include "./Formes/Carre.h"
+#include "./Formes/Cercle.h"
+#include "./Formes/Rectangle.h"
 
 void Tests::tests_unitaires_formes()
 {
