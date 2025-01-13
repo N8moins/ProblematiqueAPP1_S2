@@ -13,7 +13,7 @@
 #define CANEVAS_H
 
 #include <iostream>
-#include <vector>
+#include "VectorLib/vector.h"
 #include "Formes/forme.h"
 #include "couche.h"
 
@@ -42,7 +42,8 @@ public:
    void afficher(ostream &s);
 
 private:
-    vector<Couche*> couches;
+    Vector<Couche>* couches = new Vector<Couche>;
+    Couche* active;
 };
 
 #endif

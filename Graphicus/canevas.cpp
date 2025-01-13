@@ -47,9 +47,12 @@ bool Canevas::ajouterCouche()
 
 bool Canevas::retirerCouche(int index)
 {
-   if (index < 0 || index >= couches->getTaille())
+   if (index < 0 || index >= couches->Count())
       return false;
-   
+
+   if (couches->IsEmpty())
+       return false;
+
    Couche* c = couches[index];
 
    c->reinitialiser();
@@ -60,17 +63,43 @@ bool Canevas::retirerCouche(int index)
 
 bool Canevas::reinitialiser()
 {
-   return true;
+   try {
+       for (Couche* c : couches) {
+           c->reinitialiser();
+       }
+
+       couches->Clear();
+       return true;
+   } catch (const std::exception &e)
+   {
+       return false;
+   }
 }
 
 bool Canevas::reinitialiserCouche(int index)
 {
+   if (index >= couches->Count() || index < 0)
+       return false;
+   if (couches.Get(index) == active)
+       return false;
+
+   couches->Get(index)->reinitialiser();
+
    return true;
 }
 
 bool Canevas::activerCouche(int index)
 {
-   return true;
+    if (index >= couches->Count() || index < 0)
+        return false;
+    if (couches.Get(index) == active)
+        return false;
+
+    couches->Get(index)->changerEtat(Couche::Etat:actif);
+
+    active->changerEtat(Couche::Etat::desactive);
+    active = couches->Get(index);
+    return true;
 }
 
 bool Canevas::desactiverCouche(int index)
