@@ -44,13 +44,31 @@ void TestIsEmpty(){
     std::cout << "Empty : " << array->IsEmpty() << std::endl;
 }
 
+void TestCount(){
+    std::cout << "Count : " << array->Count() << std::endl;
+}
+
+void TestCapacity(){
+    std::cout << "Capacity : " << array->Capacity() << std::endl;
+}
+
 int main(){
     std::cout << "--------------" << std::endl;
+    TestCount();
+    TestCapacity();
     TestAdd();
+    TestCount();
+    TestCapacity();
     TestRemove();
+    TestCount();
+    TestCapacity();
     TestGet();
     TestIsEmpty();
+    TestCount();
+    TestCapacity();
     TestClear();
+    TestCount();
+    TestCapacity();
     TestIsEmpty();
     std::cout << "--------------" << std::endl;
 }

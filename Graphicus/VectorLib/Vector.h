@@ -16,6 +16,7 @@ public:
     void Display(std::ostream &s);
     T* Get(int index);
     int Count() const;
+    int Capacity() const;
     bool IsEmpty();
 
 private:
@@ -89,6 +90,11 @@ void Vector<T>::Clear(){
 template<class T>
 int Vector<T>::Count() const{
     return m_count;
+}
+
+template<class T>
+int Vector<T>::Capacity() const{
+    return m_currentSize;
 }
 
 template<class T>
