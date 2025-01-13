@@ -22,6 +22,7 @@ const int MAX_FORMES = 5;
 
 class Couche
 {
+public:
     enum Etat
     {
         Initialise,
@@ -29,10 +30,6 @@ class Couche
         actif
     };
 
-  Coordonnee ancrage;
-  Etat etat;
-
-public:
   Couche();
   ~Couche();
   bool ajouterForme(Forme *forme);
@@ -47,6 +44,8 @@ public:
 
 private:
   Forme *formes[MAX_FORMES];
+    Coordonnee ancrage;
+    Etat etat;
 };
 
 #endif

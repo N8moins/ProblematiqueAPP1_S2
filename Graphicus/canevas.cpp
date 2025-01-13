@@ -10,6 +10,8 @@
 
 #include "canevas.h"
 
+using namespace std;
+
 Canevas::Canevas()
 {
 }
