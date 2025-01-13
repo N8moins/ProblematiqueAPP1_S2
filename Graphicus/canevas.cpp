@@ -28,16 +28,16 @@ bool Canevas::ajouterCouche()
 
       bool isActive = true;
 
-      for (Couche c : this->couches)
+      for (int i = 0; i > couches->Count(); i++)
       {
-         if (c.getEtat() == Couche::Etat::actif)
+         if (couches->Get(i)->getEtat() == Couche::Etat::actif)
             isActive = false;
       }
 
       if (isActive)
          tmp->changerEtat(Couche::Etat::actif);
 
-      couches->ajouter(tmp);
+      couches->Add(tmp);
 
       return true;
    }
@@ -55,7 +55,7 @@ bool Canevas::retirerCouche(int index)
    if (couches->IsEmpty())
        return false;
 
-   Couche* c = couches[index];
+   Couche* c = couches->Get(index);
 
    c->reinitialiser();
    delete c;
@@ -66,8 +66,8 @@ bool Canevas::retirerCouche(int index)
 bool Canevas::reinitialiser()
 {
    try {
-       for (Couche* c : couches) {
-           c->reinitialiser();
+       for (int i = 0; i > couches->Count(); i++) {
+           couches->Get(i)->reinitialiser();
        }
 
        couches->Clear();
@@ -82,7 +82,7 @@ bool Canevas::reinitialiserCouche(int index)
 {
    if (index >= couches->Count() || index < 0)
        return false;
-   if (couches.Get(index) == active)
+   if (couches->Get(index) == active)
        return false;
 
    couches->Get(index)->reinitialiser();
@@ -94,10 +94,10 @@ bool Canevas::activerCouche(int index)
 {
     if (index >= couches->Count() || index < 0)
         return false;
-    if (couches.Get(index) == active)
+    if (couches->Get(index) == active)
         return false;
 
-    couches->Get(index)->changerEtat(Couche::Etat:actif);
+    couches->Get(index)->changerEtat(Couche::Etat::actif);
 
     active->changerEtat(Couche::Etat::desactive);
     active = couches->Get(index);
@@ -109,7 +109,7 @@ bool Canevas::desactiverCouche(int index)
 
     if (index >= couches->Count() || index < 0)
         return false;
-    if (couches.Get(index)->getEtat() == Couche::Etat::desactive)
+    if (couches->Get(index)->getEtat() == Couche::Etat::desactive)
         return false;
 
    couches->Get(index)->changerEtat(Couche::Etat::desactive);
@@ -118,7 +118,7 @@ bool Canevas::desactiverCouche(int index)
 
 bool Canevas::ajouterForme(Forme *p_forme)
 {
-    if (couches.Get(index)->getEtat() != Couche::Etat::actif)
+    if (active->getEtat() != Couche::Etat::actif)
         return false;
 
    return active->ajouterForme(p_forme);
@@ -126,7 +126,7 @@ bool Canevas::ajouterForme(Forme *p_forme)
 
 bool Canevas::retirerForme(int index)
 {
-    if (couches.Get(index)->getEtat() != Couche::Etat::actif)
+    if (couches->Get(index)->getEtat() != Couche::Etat::actif)
         return false;
 
     active->supprimerForme(index);
@@ -137,15 +137,15 @@ double Canevas::aire()
 {
     double aire;
 
-    for (Couche* c: couches) {
-        aire += c->aireTotale();
+    for (int i = 0; i > couches->Count(); i++)  {
+        aire += couches->Get(i)->aireTotale();
     }
     return aire;
 }
 
 bool Canevas::translater(int deltaX, int deltaY)
 {
-    if (couches.Get(index)->getEtat() != Couche::Etat::actif)
+    if (active->getEtat() != Couche::Etat::actif)
         return false;
 
     return active->translater(deltaX, deltaY);
