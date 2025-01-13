@@ -75,7 +75,7 @@ Forme *Couche::getForme(int index)
     return formes[index];
 }
 
-float Couche::aireTotale()
+double Couche::aireTotale()
 {
     float total = 0;
 
@@ -124,21 +124,21 @@ bool Couche::changerEtat(Etat etat)
     return true;
 }
 
-void Couche::afficherCouche()
+void Couche::afficherCouche(ostream &s)
 {
-    cout << "État: " << ((etat == Couche::Etat::Initialise) ? "initialisée" : (etat == Couche::Etat::actif) ? "active"
+    s << "État: " << ((etat == Couche::Etat::Initialise) ? "initialisée" : (etat == Couche::Etat::actif) ? "active"
                                                                                                             : "inactive")
          << endl;
     if (formes[0] == nullptr)
     {
-        cout << "Couche: vide" << endl;
+        s << "Couche: vide" << endl;
     }
     else
     {
         int i = 0;
         while (i < MAX_FORMES || formes[i] != nullptr)
         {
-            formes[i]->afficher(cout);
+            formes[i]->afficher(s);
             i++;
         }
     }

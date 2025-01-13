@@ -38,11 +38,11 @@ public:
   bool ajouterForme(Forme *forme);
   Forme *supprimerForme(int index);
   Forme *getForme(int index);
-  float aireTotale();
+  double aireTotale();
   bool translater(int deltaX, int deltaY);
   bool reinitialiser();
   bool changerEtat(Etat etat);
-  void afficherCouche();
+  void afficherCouche(ostream &s);
   Etat getEtat();
 
 private:

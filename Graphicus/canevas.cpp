@@ -104,29 +104,59 @@ bool Canevas::activerCouche(int index)
 
 bool Canevas::desactiverCouche(int index)
 {
+
+    if (index >= couches->Count() || index < 0)
+        return false;
+    if (couches.Get(index)->getEtat() == Couche::Etat::desactive)
+        return false;
+
+   couches->Get(index)->changerEtat(Couche::Etat::desactive);
    return true;
 }
 
 bool Canevas::ajouterForme(Forme *p_forme)
 {
-   return true;
+    if (couches.Get(index)->getEtat() != Couche::Etat::actif)
+        return false;
+
+   return active->ajouterForme(p_forme);
 }
 
 bool Canevas::retirerForme(int index)
 {
-   return true;
+    if (couches.Get(index)->getEtat() != Couche::Etat::actif)
+        return false;
+
+    active->supprimerForme(index);
+    return true;
 }
 
 double Canevas::aire()
 {
-   return 0.0;
+    double aire;
+
+    for (Couche* c: couches) {
+        aire += c->aireTotale();
+    }
+    return aire;
 }
 
 bool Canevas::translater(int deltaX, int deltaY)
 {
-   return true;
+    if (couches.Get(index)->getEtat() != Couche::Etat::actif)
+        return false;
+
+    return active->translater(deltaX, deltaY);
+
 }
 
 void Canevas::afficher(ostream &s)
 {
+    if (couches->IsEmpty()) {
+        s << "----- Aucune couche -----" << endl;
+    } else {
+        for (int i = 0; i > couches->Count(); i++) {
+            s << "----- Couche " << i << "-----" << endl;
+        }
+    }
 }
