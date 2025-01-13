@@ -20,7 +20,7 @@ Rectangle::~Rectangle()
 }
 
 double Rectangle::aire() {
-    largeur * hauteur;
+    return largeur * hauteur;
 }
 void Rectangle::afficher(ostream &s)
 {

@@ -1,6 +1,6 @@
 #include "carre.h"
 
-Carre::Carre(int x, int y, int cote)
+Carre::Carre(int x, int y, int cote) : Rectangle(x, y, cote, cote)
 {
     this->ancrage.x = x;
     this->ancrage.y = y;

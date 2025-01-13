@@ -21,8 +21,8 @@ public:
   Forme(int x = 0, int y = 0);
   virtual ~Forme();
   void translater(int deltaX, int deltaY);
-  Coordonnee getAncrage();
-  void setAncrage(Coordonnee c);
+  virtual Coordonnee getAncrage() = 0;
+  virtual void setAncrage(Coordonnee c) = 0;
   virtual double aire() = 0;
   virtual void afficher(ostream &s) = 0;
 
