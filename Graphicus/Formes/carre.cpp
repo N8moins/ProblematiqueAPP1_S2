@@ -2,8 +2,6 @@
 
 Carre::Carre(int x, int y, int cote) : Rectangle(x, y, cote, cote)
 {
-    this->ancrage.x = x;
-    this->ancrage.y = y;
     this->cote = cote;
 }
 

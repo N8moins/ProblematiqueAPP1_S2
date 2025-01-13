@@ -22,9 +22,9 @@ Canevas::~Canevas()
 
 bool Canevas::ajouterCouche()
 {
-    Couche* tmp = new Couche();
+    Couche *tmp = new Couche();
 
-   if (couches->Count() == 0)
+    if (couches->Count() == 0)
     {
         tmp->changerEtat(Couche::Etat::actif);
     }
@@ -40,7 +40,7 @@ bool Canevas::ajouterCouche()
 
 bool Canevas::retirerCouche(int index)
 {
-    if (index < 0 || index < couches->Count())
+    if (index < 0 || index > couches->Count())
         return false;
 
     if (couches->IsEmpty())
@@ -49,7 +49,10 @@ bool Canevas::retirerCouche(int index)
     Couche *c = couches->Get(index);
 
     c->reinitialiser();
-    delete c;
+    
+    couches->Remove(index);
+
+    cout << "Couche " << index << " retiree" << endl;
 
     return true;
 }
@@ -63,7 +66,6 @@ bool Canevas::reinitialiser()
             couches->Get(i)->reinitialiser();
         }
 
-        couches->Clear();
         return true;
     }
     catch (const std::exception &e)
@@ -76,6 +78,7 @@ bool Canevas::reinitialiserCouche(int index)
 {
     if (index >= couches->Count() || index < 0)
         return false;
+
     if (couches->Get(index) == active)
         return false;
 
@@ -112,6 +115,11 @@ bool Canevas::desactiverCouche(int index)
 
 bool Canevas::ajouterForme(Forme *p_forme)
 {
+    if (p_forme == nullptr)
+    {
+        return false;
+    }
+
     if (couches->Count() == 0)
     {
         return false;
@@ -125,7 +133,7 @@ bool Canevas::ajouterForme(Forme *p_forme)
 
 bool Canevas::retirerForme(int index)
 {
-    if (couches->Get(index)->getEtat() != Couche::Etat::actif)
+    if (active->getEtat() != Couche::Etat::actif)
         return false;
 
     active->supprimerForme(index);
@@ -134,7 +142,7 @@ bool Canevas::retirerForme(int index)
 
 double Canevas::aire()
 {
-    double aire;
+    double aire = 0;
 
     for (int i = 0; i < couches->Count(); i++)
     {
@@ -164,5 +172,5 @@ void Canevas::afficher(ostream &s)
             s << "----- Couche " << i << "-----" << endl;
             couches->Get(i)->afficherCouche(s);
         }
-   }
+    }
 }

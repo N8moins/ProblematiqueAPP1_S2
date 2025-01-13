@@ -7,12 +7,8 @@
 
 #include "rectangle.h"
 
-Rectangle::Rectangle(int x, int y, int l, int h) : Forme(x, y)
+Rectangle::Rectangle(int x, int y, int l, int h) : Forme(x, y), largeur(l), hauteur(h)
 {
-    ancrage.x = x;
-    ancrage.y = y;
-    largeur = largeur;
-    hauteur = hauteur;
 }
 
 Rectangle::~Rectangle()

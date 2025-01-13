@@ -29,13 +29,12 @@ bool Couche::ajouterForme(Forme *forme)
     if (etat != Couche::Etat::actif)
         return false;
 
-    for (int i = 0; i < MAX_FORMES; i++)
-        if (formes[i] == nullptr)
-        {
-            formes[i] = forme;
-            count++;
-            return true;
-        }
+    if (count < MAX_FORMES)
+    {
+        formes[count] = forme;
+        count++;
+        return true;
+    }
     return false;
 }
 
@@ -56,10 +55,12 @@ Forme *Couche::supprimerForme(int index)
     Forme *pForme = (formes[index]);
 
     formes[index] = nullptr;
-    for (int i = 0; i + index < MAX_FORMES - 1; i++)
+
+    for (int i = 0; i + index < count; i++)
     {
         formes[index + i] = formes[index + i + 1];
     }
+    
     formes[MAX_FORMES - 1] = nullptr;
     count--;
 
@@ -114,6 +115,8 @@ bool Couche::reinitialiser()
     for (int i = 0; i < count; i++)
         delete formes[i];
 
+    count = 0;
+
     return true;
 }
 
@@ -129,9 +132,9 @@ bool Couche::changerEtat(Etat etat)
 void Couche::afficherCouche(ostream &s)
 {
     s << "État: " << ((etat == Couche::Etat::Initialise) ? "initialisée" : (etat == Couche::Etat::actif) ? "active"
-                                                                                                            : "inactive")
-         << endl;
-    if (formes[0] == nullptr)
+                                                                                                         : "inactive")
+      << endl;
+    if (!count)
     {
         s << "Couche: vide" << endl;
     }

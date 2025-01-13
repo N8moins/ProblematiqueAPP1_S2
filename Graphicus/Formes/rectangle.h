@@ -18,7 +18,7 @@ class Rectangle : public Forme
 {
     public:
         Rectangle(int x = 0, int y = 0, int l = 1, int h = 2);
-        ~Rectangle();
+        virtual ~Rectangle();
         virtual void afficher(ostream &s);
         virtual double aire();
     protected:
