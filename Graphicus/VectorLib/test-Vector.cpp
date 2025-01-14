@@ -1,4 +1,4 @@
-#include "Vector.h"
+#include "vector.h"
 #include <iostream>
 
 Vector<int>* array = new Vector<int>();

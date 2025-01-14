@@ -10,9 +10,9 @@
  ********/
 
 #include "tests.h"
-#include "./Formes/Rectangle.h"
-#include "./Formes/Carre.h"
-#include "./Formes/Cercle.h"
+#include "./Formes/rectangle.h"
+#include "./Formes/carre.h"
+#include "./Formes/cercle.h"
 #include "couche.h"
 
 Canevas *canevas = new Canevas();

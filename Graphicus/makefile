@@ -16,7 +16,7 @@ graphicus-02.o: graphicus-02.cpp canevas.h couche.h Formes/forme.h
 tests.o: tests.cpp tests.h canevas.h couche.h Formes/forme.h
 	g++ -c tests.cpp
 
-canevas.o: ./VectorLib/Vector.h canevas.cpp canevas.h couche.h Formes/forme.h
+canevas.o: ./VectorLib/vector.h canevas.cpp canevas.h couche.h Formes/forme.h
 	g++ -c canevas.cpp
 
 couche.o: couche.cpp couche.h Formes/forme.h
