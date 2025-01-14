@@ -94,8 +94,15 @@ bool Couche::translater(int deltaX, int deltaY)
 {
     try
     {
-        ancrage.x += deltaX;
-        ancrage.y += deltaY;
+        for (int i = 0; i < MAX_FORMES; i++)
+        {
+            Forme* forme = formes[i];
+            if(forme != nullptr)
+                forme->translater(deltaX, deltaY);
+        }
+
+        // ancrage.x += deltaX;
+        // ancrage.y += deltaY;
 
         return true;
     }
