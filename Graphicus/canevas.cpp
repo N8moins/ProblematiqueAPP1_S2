@@ -49,7 +49,7 @@ bool Canevas::retirerCouche(int index)
     Couche *c = couches->Get(index);
 
     c->reinitialiser();
-    
+
     couches->Remove(index);
 
     cout << "Couche " << index << " retiree" << endl;
@@ -65,6 +65,8 @@ bool Canevas::reinitialiser()
         {
             couches->Get(i)->reinitialiser();
         }
+
+        couches->Clear();
 
         return true;
     }

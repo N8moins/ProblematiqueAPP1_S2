@@ -19,7 +19,7 @@ Couche::Couche()
 
 Couche::~Couche()
 {
-    for (int i = 0; i < MAX_FORMES; i++)
+    for (int i = 0; i < count; i++)
         if (formes[i] != nullptr)
             delete formes[i];
 }
