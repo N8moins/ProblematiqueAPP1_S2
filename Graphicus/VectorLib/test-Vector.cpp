@@ -1,3 +1,11 @@
+/***
+ * Fichier:  test-Vector.cpp
+ * Auteurs: Nathan Lessard et Gabriel Bruneau
+ * Date: 09 janvier 2024
+ * Description: tests pour la classe vector.h 
+ */
+
+
 #include "vector.h"
 #include <iostream>
 

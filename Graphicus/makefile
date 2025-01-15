@@ -1,8 +1,8 @@
 #
 # Auteur: C.-A. Brunet
 # Date: 13 juin 2024
-# Modifie par : ...
-# Date : ...
+# Modifie par : Nathan Lessard et Gabriel Bruneau
+# Date : 12 janvier 2025		
 # Description: compilation de graphicus-02. Ce fichier fait partie de
 #	la distribution de Graphicus.
 #

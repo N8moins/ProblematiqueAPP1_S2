@@ -2,8 +2,8 @@
  * Fichier: couche.h
  * Auteurs: C.-A. Brunet
  * Date: 13 juin 2024 (creation)
- * Modifie par : ...
- * Date : ...
+ * Modifie par : Nathan Lessard et Gabriel Bruneau
+ * Date : 13 janvier 2025
  * Description: Declaration de la classe pour une couche dans un
  *    canevas. La classe gere un tableau de formes en accord avec
  *    les specifications de Graphicus. Ce fichier fait partie de

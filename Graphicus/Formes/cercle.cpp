@@ -1,3 +1,9 @@
+/***
+ * Fichier:  cercle.cpp
+ * Auteurs: Nathan Lessard et Gabriel Bruneau
+ * Date: 09 janvier 2024
+ * Description: Implementation des methodes de la classe cercle.
+ */
 
 
 #include "cercle.h"

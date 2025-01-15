@@ -3,7 +3,7 @@
  * Auteurs: C.-A. Brunet
  * Date: 13 juin 2024 (creation)
  * Modifie par : Nathan Lessard et Gabriel Bruneau
- * Date : ...
+ * Date : 13 janvier 2025
  * Description: Declaration de la classe Canevas. La classe Canevas gere un
  *    vecteur de pointeur de couches en accord avec les specifications de Graphicus.
  *    Ce fichier fait partie de la distribution de Graphicus.

@@ -1,5 +1,5 @@
 /***
- * Fichier:  rectangle.h
+ * Fichier:  cercle.h
  * Auteurs: Nathan Lessard et Gabriel Bruneau
  * Date: 09 janvier 2024
  * Description: Definition de la classe Rectangle selon 

@@ -1,3 +1,12 @@
+/***
+ * Fichier:  vector.h
+ * Auteurs: Nathan Lessard et Gabriel Bruneau
+ * Date: 09 janvier 2024
+ * Description: Definition de la classe vector selon 
+ * les specifications de Graphicus. 
+ */
+
+
 #ifndef VECTOR_H__
 #define VECTOR_H__
 

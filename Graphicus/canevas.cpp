@@ -2,8 +2,8 @@
  * Fichier: canevas.cpp
  * Auteurs: C.-A. Brunet
  * Date: 13 juin 2024 (creation)
- * Modifie par : ...
- * Date : ...
+ * Modifie par : Nathan Lessard et Gabriel Bruneau
+ * Date : 13 janvier 2025
  * Description: Implementation des methodes des classes decrites dans
  *    canevas.h. Ce fichier fait partie de la distribution de Graphicus.
  ********/
